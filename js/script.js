@@ -2,9 +2,58 @@ window.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
     let deadline = '2019-03-28';
-    let remainder = document.querySelector('.remainder');
 
-    remainder.textContent = deadline;
+    function dateCapture() {
+        let remainderMonth = document.querySelector('.remainderMonth');
+        let remainderDay = document.querySelector('.remainderDay');
+        let remainderYear = document.querySelector('.remainderYear');
+
+        let y = new Date(Date.parse(deadline)).getFullYear();
+        let m = new Date(Date.parse(deadline)).getMonth() + 1;
+        let d = new Date(Date.parse(deadline)).getDate();
+
+        if (m == 0) {
+            remainderMonth.textContent = ' января';
+        }
+        if (m == 1) {
+            remainderMonth.textContent = ' февраля';
+        }
+        if (m == 2) {
+            remainderMonth.textContent = ' марта';
+        }
+        if (m == 3) {
+            remainderMonth.textContent = ' апреля';
+        }
+        if (m == 4) {
+            remainderMonth.textContent = ' мая';
+        }
+        if (m == 5) {
+            remainderMonth.textContent = ' июня';
+        }
+        if (m == 6) {
+            remainderMonth.textContent = ' июля';
+        }
+        if (m == 7) {
+            remainderMonth.textContent = ' августа';
+        }
+        if (m == 8) {
+            remainderMonth.textContent = ' сентября';
+        }
+        if (m == 9) {
+            remainderMonth.textContent = ' октября';
+        }
+        if (m == 10) {
+            remainderMonth.textContent = ' ноября';
+        }
+        if (m == 11) {
+            remainderMonth.textContent = ' декабря';
+        }
+
+        remainderDay.textContent = d;
+        remainderYear.textContent = y + ' года';
+    }
+
+    dateCapture();
 
     function getTimeRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date());
@@ -32,7 +81,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         function updateClock() {
             let t = getTimeRemaining(endtime);
-            
+
             if (t.days < 10) {
                 days.textContent = '0' + t.days;
             } else {
@@ -53,7 +102,7 @@ window.addEventListener('DOMContentLoaded', function () {
             } else {
                 seconds.textContent = t.seconds;
             }
-            
+
 
             if (t.total <= 0) {
                 clearInterval(timeInterval);
